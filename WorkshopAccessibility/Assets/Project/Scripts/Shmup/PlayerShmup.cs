@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -12,6 +13,8 @@ public class PlayerShmup : MonoBehaviour
     [SerializeField] private GameObject canvasLooseGO;
     [SerializeField] private GameObject looseMenuFirstSelected;
     [SerializeField] private MovingScene movingScene;
+    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text scoreText2;
     
     [Header("Life")]
     [SerializeField] private RawImage life1;
@@ -25,6 +28,7 @@ public class PlayerShmup : MonoBehaviour
     private Color colorLife;
     private Vector2 moveInput;
     public bool invincible = false;
+    private int score = 0;
 
     private void Start()
     {
@@ -47,6 +51,13 @@ public class PlayerShmup : MonoBehaviour
     {
         Move();
     }
+
+    public void addScore(int scoreToAdd)
+    {
+        score += scoreToAdd;
+        scoreText.text = score.ToString();
+        scoreText2.text = score.ToString();
+    }
     
     private void Move()
     {
@@ -61,6 +72,7 @@ public class PlayerShmup : MonoBehaviour
     {
         if (other.CompareTag("Star"))
         {
+            addScore(750);
             Destroy(other.gameObject);
             winLimit.star ++;
         }
@@ -71,6 +83,7 @@ public class PlayerShmup : MonoBehaviour
         if (invincible) return;
         
         Debug.Log("Player taking damage");
+        addScore(-250);
         life--;
         switch (life)
         {

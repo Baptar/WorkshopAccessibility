@@ -1,3 +1,4 @@
+using System.Net;
 using TarodevController;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,6 +14,7 @@ public class WinLimit : MonoBehaviour
     [SerializeField] private RawImage star2;
     [SerializeField] private RawImage star3;
     [SerializeField] private Sprite starWin;
+    [SerializeField] private TimeManager timerManager;
     
     private Color colorWin;
     [HideInInspector] public int star = 0;
@@ -34,6 +36,7 @@ public class WinLimit : MonoBehaviour
         Debug.Log(other.gameObject.name);
         if (other.CompareTag("Player"))
         {
+            if (timerManager) timerManager.run = false;
             other.gameObject.SetActive(false);
             GetComponent<Collider2D>().enabled = false;
             Debug.Log("player won");

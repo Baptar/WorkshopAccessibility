@@ -3,10 +3,13 @@ using UnityEngine;
 
 public class EnnemyShmup : MonoBehaviour
 {
+    [SerializeField] private PlayerShmup player;
     private bool canDamage = true;
+    public int life = 2; 
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (canDamage && other.TryGetComponent<PlayerShmup>(out PlayerShmup player))
+        if (canDamage && other.GetComponent<PlayerShmup>())
         {
             canDamage = false;
             player.takeDamage();
@@ -15,9 +18,14 @@ public class EnnemyShmup : MonoBehaviour
         else if (other.GetComponent<Missile>())
         {
             Debug.Log("Ennemy touched by Missile");
-            canDamage = false;
+            life--;
+            if (life <= 0)
+            {
+                player.addScore(100);
+                canDamage = false;
+                Destroy(this.gameObject);
+            }
             Destroy(other.gameObject);
-            Destroy(this.gameObject);
         }
     }
 }

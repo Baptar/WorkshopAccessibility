@@ -1,27 +1,24 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameOptions : MonoBehaviour
+public class GameOptionsShmup : MonoBehaviour
 {
     [Header("Slider")]
     [SerializeField] private Slider fireSpeedSlider;
-    [SerializeField] private Slider ennemySpeedSlider;
-    
-    [Header("Textes")]
-    [SerializeField] private TMP_Text fireSpeedText;
-    [SerializeField] private TMP_Text ennemySpeedText;
+    [SerializeField] private Slider enemySpeedSlider;
     
     [Header("Ref")]
     [SerializeField] private MovingScene movingScene;
     [SerializeField] private PlayerShmup player;
-    [SerializeField] private EnnemyPlatformer[] ennemiesPlatformer;
     
     [Header("Toggle")]
     [SerializeField] private Toggle invincibleToggle;
     
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return new WaitForSeconds(0.1f);
         if (PlayerPrefs.HasKey("invincibleShmup"))
         { 
             LoadSettingsShmup(); 
@@ -29,7 +26,7 @@ public class GameOptions : MonoBehaviour
         else
         {
             SetFireSpeedShmup();
-            //SetEnnemySpeedShmup();
+            SetEnemySpeedShmup();
             SetInvincibleShmup();
         }
     }
@@ -44,35 +41,29 @@ public class GameOptions : MonoBehaviour
     public void SetFireSpeedShmup()
     {
         float speed = fireSpeedSlider.value;
-        player.projectileDelay = .5f - speed;
+        player.projectileDelay = speed;
         PlayerPrefs.SetFloat("fireSpeedShmup", speed);
     }
     
-    public void SetEnnemySpeedShmup()
+    public void SetEnemySpeedShmup()
     {
-        float speed = ennemySpeedSlider.value;
-        if (movingScene) movingScene.duration = 100 + speed;
-        else
-        {
-            
-        }
-        PlayerPrefs.SetFloat("ennemySpeedShmup", speed);
+        float speed = enemySpeedSlider.value;
+        
+        float progression = movingScene.gameDuration / movingScene.timer;
+        movingScene.gameDuration = speed;
+        movingScene.timer = speed / progression;
+        
+        PlayerPrefs.SetFloat("enemySpeedShmup", speed);
     }
 
     private void LoadSettingsShmup()
     {
         fireSpeedSlider.value = PlayerPrefs.GetFloat("fireSpeedShmup");
-        //ennemySpeedSlider.value = PlayerPrefs.GetFloat("ennemySpeedShmup");
+        enemySpeedSlider.value = PlayerPrefs.GetFloat("enemySpeedShmup");
         invincibleToggle.isOn = PlayerPrefs.GetInt("invincibleShmup") == 1 ? true : false;
         
         SetFireSpeedShmup();
-       // SetEnnemySpeedShmup();
+        SetEnemySpeedShmup();
         SetInvincibleShmup();
-    }
-
-    public void UpdateTextShmup()
-    {
-        fireSpeedText.text = Mathf.RoundToInt(fireSpeedSlider.value * 100) + "%";
-        ennemySpeedText.text = Mathf.RoundToInt(ennemySpeedSlider.value * 100) + "%";
     }
 }
