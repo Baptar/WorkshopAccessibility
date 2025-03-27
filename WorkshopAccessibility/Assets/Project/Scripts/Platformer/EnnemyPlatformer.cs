@@ -16,7 +16,8 @@ public class EnnemyPlatformer : MonoBehaviour
 
     private Transform start;
     private Transform target;
-    private float timer = 0.0f;
+    [HideInInspector] public float delayTimer; 
+    [HideInInspector] public float timer = 0.0f;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,16 +25,17 @@ public class EnnemyPlatformer : MonoBehaviour
         start = startTransform;
         target = targetTransform;
         gameObject.transform.position = startTransform.position;
+        delayTimer = delay;
     }
 
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer < delay)
+        if (timer < delayTimer)
         {
             
-            gameObject.transform.position = new Vector3(Mathf.Lerp(start.position.x, target.position.x, timer / delay), gameObject.transform.position.y, gameObject.transform.position.z);
+            gameObject.transform.position = new Vector3(Mathf.Lerp(start.position.x, target.position.x, timer / delayTimer), gameObject.transform.position.y, gameObject.transform.position.z);
         }
         else
         {
@@ -45,8 +47,10 @@ public class EnnemyPlatformer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<PlayerController>())
+        if (collision.TryGetComponent<PlayerController>(out PlayerController player))
         {
+            if (player.invincible) return;
+            
             collision.gameObject.SetActive(false);
             cameraFollowPlayer.followPlayer = false;
             canvasLooseGO.SetActive(true);

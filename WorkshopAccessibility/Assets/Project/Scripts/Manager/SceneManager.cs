@@ -9,7 +9,7 @@ public class SceneManager : MonoBehaviour
     
     public void OpenPlatformerScene()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Platformer");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Platformer_Integration");
     }
     
     public void OpenShmupScene()

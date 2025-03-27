@@ -20,6 +20,7 @@ namespace TarodevController
         private FrameInput _frameInput;
         private Vector2 _frameVelocity;
         private bool _cachedQueryStartInColliders;
+        public bool invincible = false;
 
         #region Interface
 
@@ -49,6 +50,7 @@ namespace TarodevController
         {
             if (other.CompareTag("Star"))
             {
+                other.gameObject.SetActive(false);
                 Destroy(other.gameObject);
                 winLimit.star ++;
             }
