@@ -7,7 +7,7 @@ public class PlayerShmup : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
     [SerializeField] private GameObject projectile;
-    [SerializeField] private float projectileDelay;
+    public float projectileDelay;
     [SerializeField] private WinLimit winLimit;
     [SerializeField] private GameObject canvasLooseGO;
     [SerializeField] private GameObject looseMenuFirstSelected;
@@ -24,6 +24,7 @@ public class PlayerShmup : MonoBehaviour
     private Rigidbody2D rb;
     private Color colorLife;
     private Vector2 moveInput;
+    public bool invincible = false;
 
     private void Start()
     {
@@ -67,6 +68,8 @@ public class PlayerShmup : MonoBehaviour
 
     public void takeDamage()
     {
+        if (invincible) return;
+        
         Debug.Log("Player taking damage");
         life--;
         switch (life)

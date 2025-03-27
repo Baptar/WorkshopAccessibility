@@ -4,7 +4,7 @@ public class MovingScene : MonoBehaviour
 {
     [SerializeField] private Transform startPosition;
     [SerializeField] private Transform endPosition;
-    [SerializeField] private float duration; 
+    public float duration; 
     [SerializeField] private GameObject movingScene;
     
     float timer = 0f;
