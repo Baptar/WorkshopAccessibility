@@ -51,6 +51,7 @@ public class EnnemyPlatformer : MonoBehaviour
         {
             if (player.invincible) return;
             
+            AudioManager.instance.PlaySFX(AudioManager.instance.contactEnemy);
             collision.gameObject.SetActive(false);
             cameraFollowPlayer.followPlayer = false;
             canvasLooseGO.SetActive(true);

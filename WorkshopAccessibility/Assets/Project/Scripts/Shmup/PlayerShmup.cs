@@ -1,8 +1,8 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerShmup : MonoBehaviour
 {
@@ -51,7 +51,7 @@ public class PlayerShmup : MonoBehaviour
     {
         Move();
     }
-
+    
     public void addScore(int scoreToAdd)
     {
         score += scoreToAdd;
@@ -73,6 +73,7 @@ public class PlayerShmup : MonoBehaviour
         if (other.CompareTag("Star"))
         {
             addScore(750);
+            AudioManager.instance.PlaySFX(AudioManager.instance.star);
             Destroy(other.gameObject);
             winLimit.star ++;
         }
@@ -82,8 +83,8 @@ public class PlayerShmup : MonoBehaviour
     {
         if (invincible) return;
         
-        Debug.Log("Player taking damage");
         addScore(-250);
+        Debug.Log("Player taking damage");
         life--;
         switch (life)
         {
@@ -108,6 +109,7 @@ public class PlayerShmup : MonoBehaviour
 
     private void Die()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.loose);
         Debug.Log("player is Dead");
         canvasLooseGO.SetActive(true);
         movingScene.moving = false;

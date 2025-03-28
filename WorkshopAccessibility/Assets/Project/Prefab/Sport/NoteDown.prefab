@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1444230690637933379, guid: 6d903670792a25143b732c994c646c88, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1444230690637933379, guid: 6d903670792a25143b732c994c646c88, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1444230690637933379, guid: 6d903670792a25143b732c994c646c88, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1444230690637933379, guid: 6d903670792a25143b732c994c646c88, type: 3}
       propertyPath: m_LocalPosition.x
@@ -63,10 +63,18 @@ PrefabInstance:
     - target: {fileID: 3230167054785152664, guid: 6d903670792a25143b732c994c646c88, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -4432714776453720695, guid: 92470e399b0549943996310d17286cf4, type: 3}
+      objectReference: {fileID: -2274830391625427457, guid: 19c5bd0c2268fbe45b8f9722819019f1, type: 3}
     - target: {fileID: 3961619047363904829, guid: 6d903670792a25143b732c994c646c88, type: 3}
       propertyPath: m_Name
       value: NoteDown
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245691846833943760, guid: 6d903670792a25143b732c994c646c88, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 3.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245691846833943760, guid: 6d903670792a25143b732c994c646c88, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 4.38
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -50,6 +50,7 @@ namespace TarodevController
         {
             if (other.CompareTag("Star"))
             {
+                AudioManager.instance.PlaySFX(AudioManager.instance.star);
                 other.gameObject.SetActive(false);
                 Destroy(other.gameObject);
                 winLimit.star ++;

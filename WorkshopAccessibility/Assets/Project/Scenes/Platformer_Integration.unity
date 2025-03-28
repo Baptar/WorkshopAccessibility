@@ -40276,6 +40276,13 @@ MonoBehaviour:
   win: {fileID: 8300000, guid: 9ac007030d0d2214f8e1380681bb4493, type: 3}
   fall: {fileID: 0}
   groundSkate: {fileID: 0}
+  star: {fileID: 8300000, guid: d9dcc496a33b9114d825f8aabb3042e9, type: 3}
+  contactEnemy: {fileID: 8300000, guid: eed31cccb6b7fab47925af79aa54431b, type: 3}
+  explosionVaisseau: {fileID: 0}
+  laserShot: {fileID: 0}
+  explosion: {fileID: 0}
+  clicQTE: {fileID: 0}
+  loose: {fileID: 8300000, guid: 5d612da2c0c9ad3459144c9c5e9943b1, type: 3}
 --- !u!4 &2093239338
 Transform:
   m_ObjectHideFlags: 0

@@ -19,6 +19,7 @@ public class FallLimitPlatfomer : MonoBehaviour
         Debug.Log(other.gameObject.name);
         if (other.GetComponent<PlayerController>())
         {
+            AudioManager.instance.PlaySFX(AudioManager.instance.loose);
             Debug.Log("player is Dead");
             cameraFollowPlayer.followPlayer = false;
             canvasLooseGO.SetActive(true);

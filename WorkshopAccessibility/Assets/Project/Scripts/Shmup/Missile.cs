@@ -1,9 +1,15 @@
+using System;
 using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
     [SerializeField] private float speed = 4.0f;
-    
+
+    private void Start()
+    {
+        AudioManager.instance.PlaySFX(AudioManager.instance.laserShot);
+    }
+
     // Update is called once per frame
     void Update()
     {

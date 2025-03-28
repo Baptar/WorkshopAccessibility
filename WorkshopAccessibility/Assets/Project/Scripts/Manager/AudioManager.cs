@@ -16,6 +16,17 @@ public class AudioManager : MonoBehaviour
     public AudioClip win;
     public AudioClip fall;
     public AudioClip groundSkate;
+    public AudioClip star;    
+    public AudioClip contactEnemy;    
+    public AudioClip explosionVaisseau;
+    public AudioClip laserShot;
+    public AudioClip explosion;
+    public AudioClip clicQTE;
+    public AudioClip loose;
+    public AudioClip perfect;
+    public AudioClip good;
+    public AudioClip miss;
+    
     
     public static AudioManager instance;
     

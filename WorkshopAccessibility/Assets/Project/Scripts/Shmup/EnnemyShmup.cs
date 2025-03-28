@@ -13,6 +13,8 @@ public class EnnemyShmup : MonoBehaviour
         {
             canDamage = false;
             player.takeDamage();
+            AudioManager.instance.PlaySFX(AudioManager.instance.explosionVaisseau);
+            AudioManager.instance.PlaySFX(AudioManager.instance.explosion);
             Destroy(gameObject);
         }
         else if (other.GetComponent<Missile>())
@@ -21,6 +23,7 @@ public class EnnemyShmup : MonoBehaviour
             life--;
             if (life <= 0)
             {
+                AudioManager.instance.PlaySFX(AudioManager.instance.explosion);
                 player.addScore(100);
                 canDamage = false;
                 Destroy(this.gameObject);

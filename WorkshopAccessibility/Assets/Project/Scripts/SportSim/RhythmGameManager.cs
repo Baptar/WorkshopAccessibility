@@ -27,6 +27,10 @@ public class RhythmGameManager : MonoBehaviour
     [SerializeField] private TMP_Text comboText;
     [SerializeField] private TMP_Text comboMaxText;
 
+    [SerializeField] private GameObject perfect;
+    [SerializeField] private GameObject good;
+    [SerializeField] private GameObject nan;
+
     private int currentPose = -1;
     private int maxCombo = 0;
 
@@ -69,6 +73,7 @@ public class RhythmGameManager : MonoBehaviour
 
     void HandleNotePress(int laneIndex)
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.clicQTE);
         foreach (GameObject note in activeNotes)
         {
             if (noteLanes[note] != laneIndex) continue;
@@ -76,8 +81,9 @@ public class RhythmGameManager : MonoBehaviour
             float distance = Mathf.Abs(note.transform.position.y - targetZone.position.y);
             if (distance < perfectTimingWindow)
             {
+                StartCoroutine(ShowPerfect());
                 Debug.Log("Perfect!");
-                
+                AudioManager.instance.PlaySFX(AudioManager.instance.perfect);
                 currentPose++;
                 if (currentPose >= posesSprites.Length) currentPose = 0;
                     playerImage.texture = posesSprites[currentPose].texture;
@@ -91,6 +97,8 @@ public class RhythmGameManager : MonoBehaviour
             }
             if (distance < goodTimingWindow)
             {
+                StartCoroutine(ShowGood());
+                AudioManager.instance.PlaySFX(AudioManager.instance.good);
                 currentPose++;
                 if (currentPose >= posesSprites.Length) currentPose = 0;
                     playerImage.texture = posesSprites[currentPose].texture;
@@ -105,13 +113,18 @@ public class RhythmGameManager : MonoBehaviour
             }
         }
         combo = 0;
+        StartCoroutine(ShowNan());
+        AudioManager.instance.PlaySFX(AudioManager.instance.miss);
         playerImage.texture = poseBadSprite.texture;
         UpdateUI();
     }
 
     void MissNote(GameObject note)
     {
+        StartCoroutine(ShowNan());
         Debug.Log("Missed!");
+        if (playerImage.texture != poseBadSprite.texture)
+            AudioManager.instance.PlaySFX(AudioManager.instance.miss);
         playerImage.texture = poseBadSprite.texture;
         combo = 0;
         activeNotes.Remove(note);
@@ -144,5 +157,26 @@ public class RhythmGameManager : MonoBehaviour
         scoreText2.text = score.ToString();
         comboText.text = "Combo: " + combo;
         comboMaxText.text = "Combo max: " + maxCombo;
+    }
+
+    private IEnumerator ShowPerfect()
+    {
+        perfect.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        perfect.SetActive(false);
+    }
+    
+    private IEnumerator ShowGood()
+    {
+        good.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        good.SetActive(false);
+    }
+    
+    private IEnumerator ShowNan()
+    {
+        nan.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        nan.SetActive(false);
     }
 }
