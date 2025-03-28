@@ -36,6 +36,7 @@ public class WinLimit : MonoBehaviour
         Debug.Log(other.gameObject.name);
         if (other.CompareTag("Player"))
         {
+            AudioManager.instance.PlaySFX(AudioManager.instance.win);
             if (timerManager) timerManager.run = false;
             other.gameObject.SetActive(false);
             GetComponent<Collider2D>().enabled = false;

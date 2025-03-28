@@ -7879,7 +7879,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &394903361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8842,7 +8842,7 @@ MonoBehaviour:
   m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.0001
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -21056,6 +21056,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Controller
       objectReference: {fileID: 0}
+    - target: {fileID: 1625075470443906963, guid: 6bc542c3f1945ec42847d5f692ded9b7, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -7997157837918445215, guid: 6fba0c70e9ffdf74f8a351d865a8735a, type: 2}
     - target: {fileID: 6331384259032590750, guid: 6bc542c3f1945ec42847d5f692ded9b7, type: 3}
       propertyPath: winLimit
       value: 
@@ -21277,7 +21281,7 @@ MonoBehaviour:
   m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.0001
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -23320,7 +23324,7 @@ MonoBehaviour:
   m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.0001
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -26946,12 +26950,12 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 4772886482391711903, guid: 6fba0c70e9ffdf74f8a351d865a8735a, type: 2}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: f756b90dcb8b1e84d969c54f4cea947b, type: 3}
+  m_Resource: {fileID: 8300000, guid: f756b90dcb8b1e84d969c54f4cea947b, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -34364,7 +34368,7 @@ MonoBehaviour:
   m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.0001
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -40267,9 +40271,9 @@ MonoBehaviour:
   musicSource: {fileID: 1903528662}
   ambianceSource: {fileID: 1447339562}
   sfxSource: {fileID: 1612567484}
-  background: {fileID: 8300000, guid: 20fb292420329574fa47f9576008b23e, type: 3}
+  background: {fileID: 8300000, guid: 6ca53d4e9f9aca14d846947f8d5b46e9, type: 3}
   receiveDamage: {fileID: 0}
-  win: {fileID: 0}
+  win: {fileID: 8300000, guid: 9ac007030d0d2214f8e1380681bb4493, type: 3}
   fall: {fileID: 0}
   groundSkate: {fileID: 0}
 --- !u!4 &2093239338

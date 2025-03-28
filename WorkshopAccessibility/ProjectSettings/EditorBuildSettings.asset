@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Project/Scenes/SportSim.unity
     guid: efef60551047e514d8130789214f5cb5
   - enabled: 1
-    path: Assets/Project/Scenes/Platformer.unity
-    guid: aff08667bc3a5dc49a82d0bae3defa14
+    path: Assets/Project/Scenes/Platformer_Integration.unity
+    guid: 9bf84d9c3ad34b643ab05b78e0cc5839
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2385ae01ef8bb3049bc5da91a4ef070e, type: 3}
   m_UseUCBPForAssetBundles: 0
