@@ -34,8 +34,10 @@ public class RhythmGameManager : MonoBehaviour
     private int currentPose = -1;
     private int maxCombo = 0;
 
+    public float actualNoteSpeed;
     void Start()
     {
+        actualNoteSpeed = noteSpeed;
         StartCoroutine(SpawnNotes());
     }
 
@@ -50,7 +52,7 @@ public class RhythmGameManager : MonoBehaviour
         for (int i = activeNotes.Count - 1; i >= 0; i--)
         {
             GameObject note = activeNotes[i];
-            note.transform.Translate(Vector3.down * noteSpeed * Time.deltaTime);
+            note.transform.Translate(Vector3.down * actualNoteSpeed * Time.deltaTime);
             
             if (note.transform.position.y < missThreshold)
             {
